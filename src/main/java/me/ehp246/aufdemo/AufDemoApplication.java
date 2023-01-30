@@ -27,10 +27,10 @@ import me.ehp246.aufrest.api.annotation.EnableByRest;
 @EnableByRest
 @EnableByJms
 @EnableForJms({ @Inbound(name = "auf-demo.inbox", value = @From("auf-demo.inbox")),
-        @Inbound(name = "auf-demo.event", value = @From(value = "auf-demo.event", type = DestinationType.TOPIC, sub = @Sub(shared = false, durable = false)), autoStartup = "false", scan = OnMsg.class),
+        @Inbound(name = "auf-demo.event", value = @From(value = "auf-demo.event", type = DestinationType.TOPIC, sub = @Sub(name = "", shared = false, durable = false)), autoStartup = "false", scan = OnMsg.class),
         @Inbound(name = "auf-demo.event/s-d$$D",
-                value = @From(value = "auf-demo.event", type = DestinationType.TOPIC, sub = @Sub(value = "s-d$$D", shared = true, durable = true)), autoStartup = "false", scan = OnMsg.class),
-        @Inbound(name = "auf-demo.event/s-nd", value = @From(value = "auf-demo.event", type = DestinationType.TOPIC, sub = @Sub(value = "s-nd", shared = true, durable = false)), autoStartup = "true", scan = OnMsg.class) })
+                value = @From(value = "auf-demo.event", type = DestinationType.TOPIC, sub = @Sub(name = "s-d", shared = true, durable = true)), autoStartup = "true", scan = OnMsg.class),
+        @Inbound(name = "auf-demo.event/s-nd", value = @From(value = "auf-demo.event", type = DestinationType.TOPIC, sub = @Sub(name = "s-nd", shared = true, durable = false)), autoStartup = "false", scan = OnMsg.class) })
 @SpringBootApplication
 public class AufDemoApplication {
     public static final ObjectMapper OBJECT_MAPPER = new ObjectMapper().setSerializationInclusion(Include.NON_NULL)

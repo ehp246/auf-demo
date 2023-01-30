@@ -33,7 +33,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.7.4</version>
+		<version>3.0.2</version>
 		<relativePath></relativePath>
 	</parent>
 
@@ -41,7 +41,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-		<auf-jms.version>0.8.8</auf-jms.version>
+		<auf-jms.version>2.1.0</auf-jms.version>
 		
 		<auf-rest.version>4.0.2</auf-rest.version>
 		
@@ -56,7 +56,7 @@
 
 		<artemis-jakarta-server.version>2.27.1</artemis-jakarta-server.version>
 		
-		<azure-starter-servicebus-jms.version>4.5.0</azure-starter-servicebus-jms.version>
+		<azure-starter-servicebus-jms.version>5.0.0</azure-starter-servicebus-jms.version>
 
 		<maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
 		<maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
