@@ -1,0 +1,8 @@
+spring:
+  artemis:
+    mode: embedded
+me:
+  ehp246:
+    aufjms:
+      dispatchlogger:
+        enabled: true
