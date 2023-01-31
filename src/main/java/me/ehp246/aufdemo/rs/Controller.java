@@ -1,15 +1,15 @@
 package me.ehp246.aufdemo.rs;
 
-import java.util.List;
+import java.time.Instant;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import me.ehp246.aufdemo.inbox.proxy.Send;
 import me.ehp246.aufdemo.proxy.SendHeartbeat;
 
 /**
@@ -19,13 +19,22 @@ import me.ehp246.aufdemo.proxy.SendHeartbeat;
 @RestController
 public class Controller {
     private final static Logger LOGGER = LogManager.getLogger();
+    @Autowired
+    @Qualifier("sendHeartbeatByRest")
+    private SendHeartbeat sendHeartbeatByRest;
 
     @Autowired
-    private Send send;
+    @Qualifier("sendHeartbeatByJms")
+    private SendHeartbeat sendHeartbeatByJms;
 
-    @PostMapping("/sum")
-    public void sum(@RequestBody final List<Integer> ops) {
-        send.sum(ops);
+    @PostMapping("/heartbeat/rest")
+    public void byRest() {
+        this.sendHeartbeatByRest.heartbeat(new SendHeartbeat.Payload(Instant.now()));
+    }
+
+    @PostMapping("/heartbeat/jms")
+    public void byJms() {
+        this.sendHeartbeatByJms.heartbeat(new SendHeartbeat.Payload(Instant.now()));
     }
 
     @PostMapping("/heartbeat")
