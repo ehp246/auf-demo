@@ -1,4 +1,4 @@
-package me.ehp246.aufdemo.web;
+package me.ehp246.aufdemo.rs;
 
 import java.util.List;
 
